@@ -1,0 +1,37 @@
+import java.util.*;
+public class roman
+{
+    public static int values(char a){
+        
+        switch(a){
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+        }
+        return -1;
+    }
+    
+    
+    public static void romanToInteger(String roman){
+        int sum = 0;
+        for(int i=roman.length()-1; i>-1; i--){
+            if(i!=roman.length()-1 && values(roman.charAt(i)) < values(roman.charAt(i+1)))
+                sum-=1;
+            else
+                sum+=values(roman.charAt(i));
+        }
+        
+        if(sum > 0)
+            System.out.println("Integer is "+sum);
+    }
+    
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter roman number : ");
+		romanToInteger(sc.next());
+	}
+}
